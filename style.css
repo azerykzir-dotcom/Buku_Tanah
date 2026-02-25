@@ -1,0 +1,46 @@
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+input {
+  padding: 8px;
+  margin: 5px;
+}
+
+button {
+  padding: 8px 12px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+button.hapus {
+  background: red;
+}
+
+/* logo beside heading */
+.logo {
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
