@@ -5,7 +5,7 @@ function login() {
   let user = document.getElementById("username").value;
   let pass = document.getElementById("password").value;
 
-  if (user === "admin" && pass === "123") {
+  if (user === "reza@29" && pass === "12arsip") {
     localStorage.setItem("login", "true");
     tampilkanApp();
   } else {
@@ -36,10 +36,11 @@ function tampilkanBuku(data = buku) {
   data.forEach((item, index) => {
     tabel.innerHTML += `
       <tr>
-        <td>${index + 1}</td>
-        <td>${item.judul}</td>
-        <td>${item.penulis}</td>
-        <td>${item.tahun}</td>
+        <td>${item.noGerbong}</td>
+        <td>${item.Kelurahan}</td>
+        <td>${item.jenisHak}</td>
+        <td>${item.noHak}</td>
+        <td>${item.tahun || ''}</td> <!-- include tahun column -->
         <td>
           <button onclick="editBuku(${index})">Edit</button>
           <button class="hapus" onclick="hapusBuku(${index})">Hapus</button>
@@ -52,16 +53,18 @@ function tampilkanBuku(data = buku) {
 }
 
 function tambahBuku() {
-  let judul = document.getElementById("judul").value;
-  let penulis = document.getElementById("penulis").value;
-  let tahun = document.getElementById("tahun").value;
+  let noGerbong = document.getElementById("noGerbong").value;
+  let Kelurahan = document.getElementById("Kelurahan").value;
+  let jenisHak = document.getElementById("jenisHak").value;    // corrected id
+  let noHak = document.getElementById("noHak").value;          // corrected id
+  let tahun = document.getElementById("tahun").value;         // capture tahun
 
-  if (!judul || !penulis || !tahun) {
+  if (!noGerbong || !Kelurahan || !jenisHak || !noHak || !tahun) {
     alert("Isi semua data!");
     return;
   }
 
-  buku.push({ judul, penulis, tahun });
+  buku.push({ noGerbong, Kelurahan, jenisHak, noHak, tahun });
   tampilkanBuku();
 }
 
@@ -73,9 +76,11 @@ function hapusBuku(index) {
 function editBuku(index) {
   let data = buku[index];
 
-  document.getElementById("judul").value = data.judul;
-  document.getElementById("penulis").value = data.penulis;
-  document.getElementById("tahun").value = data.tahun;
+  document.getElementById("noGerbong").value = data.noGerbong;
+  document.getElementById("Kelurahan").value = data.Kelurahan;
+  document.getElementById("jenisHak").value = data.jenisHak; // corrected id
+  document.getElementById("noHak").value = data.noHak;       // corrected id
+  document.getElementById("tahun").value = data.tahun || ''; // set tahun if exists
 
   buku.splice(index, 1);
 }
@@ -85,9 +90,10 @@ function cariBuku() {
   let keyword = document.getElementById("search").value.toLowerCase();
 
   let hasil = buku.filter(item =>
-    item.judul.toLowerCase().includes(keyword) ||
-    item.penulis.toLowerCase().includes(keyword) ||
-    item.tahun.toString().includes(keyword)
+    item.noGerbong.toLowerCase().includes(keyword) ||
+    item.Kelurahan.toLowerCase().includes(keyword) ||
+    item.jenisHak.toLowerCase().includes(keyword) ||
+    item.noHak.toLowerCase().includes(keyword)
   );
 
   tampilkanBuku(hasil);
