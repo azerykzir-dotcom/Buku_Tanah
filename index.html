@@ -8,6 +8,7 @@
 <body>
 
   <!-- LOGIN -->
+   <img src="bpn.jpg" alt="BPN Logo" class="logo">
   <div id="loginPage">
     <h2>Login Admin</h2>
     <!-- Username field first -->
@@ -19,7 +20,7 @@
 
   <!-- APP -->
   <div id="appPage" style="display:none;">
-    <h1><img src="bpn.jpg" alt="BPN Logo" class="logo"> Letak Buku Tanah Kantah Kota Cilegon</h1>
+    <h1><img src="bpn.jpg" alt="BPN Logo" class="logo"> Data Buku Tanah & Surat Ukur Kantah Kota Cilegon</h1>
 
     <button onclick="logout()">Logout</button>
 
@@ -29,6 +30,7 @@
     <!-- FORM -->
     <div class="form">
       <input type="number" id="noGerbong" placeholder="No Gerbong">
+      <input type="text" id="Saf" placeholder="Saf">
       <input type="text" id="Kelurahan" placeholder="Kelurahan">
       <input type="text" id="jenisHak" placeholder="Jenis Hak">
       <input type="text" id="noHak" placeholder="No Hak">
@@ -40,6 +42,7 @@
       <thead>
         <tr>
           <th>No Gerbong</th>
+          <th>Saf</th>
           <th>Kelurahan</th>
           <th>Jenis Hak</th>
           <th>No Hak</th>
@@ -54,5 +57,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
