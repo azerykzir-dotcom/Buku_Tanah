@@ -37,6 +37,7 @@ function tampilkanBuku(data = buku) {
     tabel.innerHTML += `
       <tr>
         <td>${item.noGerbong}</td>
+        <td>${item.Saf || ''}</td> <!-- include Saf column if exists -->
         <td>${item.Kelurahan}</td>
         <td>${item.jenisHak}</td>
         <td>${item.noHak}</td>
@@ -54,6 +55,7 @@ function tampilkanBuku(data = buku) {
 
 function tambahBuku() {
   let noGerbong = document.getElementById("noGerbong").value;
+  let Saf = document.getElementById("Saf").value; // capture Saf
   let Kelurahan = document.getElementById("Kelurahan").value;
   let jenisHak = document.getElementById("jenisHak").value;    // corrected id
   let noHak = document.getElementById("noHak").value;          // corrected id
@@ -77,6 +79,7 @@ function editBuku(index) {
   let data = buku[index];
 
   document.getElementById("noGerbong").value = data.noGerbong;
+  document.getElementById("Saf").value = data.Saf || ''; // set Saf if exists
   document.getElementById("Kelurahan").value = data.Kelurahan;
   document.getElementById("jenisHak").value = data.jenisHak; // corrected id
   document.getElementById("noHak").value = data.noHak;       // corrected id
@@ -91,6 +94,7 @@ function cariBuku() {
 
   let hasil = buku.filter(item =>
     item.noGerbong.toLowerCase().includes(keyword) ||
+    item.Saf.toLowerCase().includes(keyword) || // include Saf in search
     item.Kelurahan.toLowerCase().includes(keyword) ||
     item.jenisHak.toLowerCase().includes(keyword) ||
     item.noHak.toLowerCase().includes(keyword)
